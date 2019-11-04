@@ -1,8 +1,8 @@
 import numpy
 import pyautogui
-import imutils
 import cv2
 import time
+from time import gmtime, strftime
 
 # разрешение экрана
 class screen:   
@@ -10,7 +10,7 @@ class screen:
     height = 1080
 flag = False
 
-while(1)
+while(1):
     if flag == True:
         pyautogui.press('w')
         time.sleep(5)
@@ -25,10 +25,10 @@ while(1)
     # поиск шаблона на скрине
     template_coordinates = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
     if (abs(cv2.minMaxLoc(template_coordinates)[3][0] - cv2.minMaxLoc(template_coordinates)[3][1])<=10):
-        print("Time to fish!")
+        print(strftime("%H:%M:%S", gmtime()), "Time to fish!")
         pyautogui.press('w')
         flag = True
         time.sleep(7)
     else:
-        print("Not time yet!")
+        print(strftime("%H:%M:%S", gmtime()),"Not time yet!")
         flag = False
