@@ -39,7 +39,7 @@
 [![game-start](https://imgur.com/7AGIq77.png "game-start")](https://imgur.com/7AGIq77.png "game-start")
 бот работает как на российском (mail.ru) клиенте, так и на корейском
 
-**Запустите консоль от *имени администратора**
+**Запустите консоль от имени администратора**
 
 [![cmd](https://imgur.com/wFqCdRb.png "cmd")](https://imgur.com/wFqCdRb.png "cmd")
 
