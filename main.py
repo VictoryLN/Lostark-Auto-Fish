@@ -2,13 +2,7 @@ import numpy
 import pyautogui
 import cv2
 import time
-import ctypes
 from time import gmtime, strftime
-
-# # эмуляция ввода в DX приложение
-# SendInput = ctypes.windll.user32.SendInput
-# W = 0x11
-
 
 # разрешение экрана
 class screen:   
