@@ -3,6 +3,7 @@ import pyautogui
 import cv2
 import time
 from time import gmtime, strftime
+import random
 
 # разрешение экрана
 class screen:   
@@ -16,7 +17,7 @@ template = cv2.imread("template.png", 0)
 while(1):
     if flag == True:
         pyautogui.press('w')
-        time.sleep(5)
+        time.sleep( random.uniform(4.5, 6.5))
 
     # создание скриншота
     image = pyautogui.screenshot(region=(screen.weight/2 - 100, screen.height/2 - 150, 200, 200))
@@ -30,9 +31,11 @@ while(1):
     # исходя из результатов поиска либо нажwимается W либо ничего не происходит и цикл идет по новой
     if len(loc[0]) > 0:    
         print(strftime("%H:%M:%S", gmtime()), "Time to fish!", loc[0])
+        time.sleep(random.uniform(0.2, 1.0))
         pyautogui.press('w')
         flag = True
-        time.sleep(7)
+        #time.sleep(7)
+        time.sleep(random.uniform(5.5, 7.5))
     else:
         print(strftime("%H:%M:%S", gmtime()), "Not time yet!", loc[0])
         flag = False
