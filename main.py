@@ -34,7 +34,6 @@ while(1):
         time.sleep(random.uniform(0.2, 1.0))
         pyautogui.press('w')
         flag = True
-        #time.sleep(7)
         time.sleep(random.uniform(5.5, 7.5))
     else:
         print(strftime("%H:%M:%S", gmtime()), "Not time yet!", loc[0])
