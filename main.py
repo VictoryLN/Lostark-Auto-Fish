@@ -2,7 +2,13 @@ import numpy
 import pyautogui
 import cv2
 import time
+import ctypes
 from time import gmtime, strftime
+
+# # эмуляция ввода в DX приложение
+# SendInput = ctypes.windll.user32.SendInput
+# W = 0x11
+
 
 # разрешение экрана
 class screen:   
@@ -25,13 +31,14 @@ while(1):
 
     # поиск шаблона на скрине
     template_coordinates = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
+    loc = numpy.where( template_coordinates >= 0.7)
 
-    # исходя из результатов поиска либо нажимается W либо ничего не происходит и цикл идет по новой
-    if (abs(cv2.minMaxLoc(template_coordinates)[3][0] - cv2.minMaxLoc(template_coordinates)[3][1])<=5):
-        print(strftime("%H:%M:%S", gmtime()), "Time to fish!")
+    # исходя из результатов поиска либо нажwимается W либо ничего не происходит и цикл идет по новой
+    if len(loc[0]) > 0:    
+        print(strftime("%H:%M:%S", gmtime()), "Time to fish!", loc[0])
         pyautogui.press('w')
         flag = True
         time.sleep(7)
     else:
-        print(strftime("%H:%M:%S", gmtime()),"Not time yet!")
+        print(strftime("%H:%M:%S", gmtime()), "Not time yet!", loc[0])
         flag = False
