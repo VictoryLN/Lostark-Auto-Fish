@@ -4,7 +4,8 @@ import cv2
 import time
 from time import gmtime, strftime
 import random
-import win32gui
+
+fishing_keybind = "3"
 
 # разрешение экрана
 class screen:   
@@ -16,15 +17,15 @@ flag = "pulled"
 template = cv2.imread("template.png", 0)
 poplavok = cv2.imread("poplavok.png", 0)
 
-print(strftime("%H:%M:%S", gmtime()), "starting a bot")
+print(strftime("%H:%M:%S", gmtime()), "starting auto fish")
 time.sleep(5)
 
 while(1):
     if flag == "pulled":
         print(strftime("%H:%M:%S", gmtime()), "throwing a fishing rod [1]")
-        pyautogui.keyDown('w')
+        pyautogui.keyDown(fishing_keybind)
         time.sleep( random.uniform( 0.05, 0.1 ))
-        pyautogui.keyUp('w')
+        pyautogui.keyUp(fishing_keybind)
         flag = "thrown"
         time.sleep( random.uniform(4.5, 6.5))        
         
@@ -44,24 +45,25 @@ while(1):
         if flag == "thrown":  
             print(strftime("%H:%M:%S", gmtime()), "Time to fish!")
             time.sleep(random.uniform(0.2, 1.0))
-            pyautogui.keyDown('w')
+            pyautogui.keyDown(fishing_keybind)
             time.sleep( random.uniform( 0.05, 0.1 ))
-            pyautogui.keyUp('w')
+            pyautogui.keyUp(fishing_keybind)
             flag = "pulled"
-            time.sleep(random.uniform(5.5, 7.5))
+            time.sleep(random.uniform(8.5, 10.5))
 
     poplavok_coordinates = cv2.matchTemplate(image, poplavok, cv2.TM_CCOEFF_NORMED)
     poplavok_loc = numpy.where( poplavok_coordinates >= 0.7)
     
     if len(poplavok_loc[0]) == 0 and flag == "pulled":
         print(strftime("%H:%M:%S", gmtime()), "throwing a fishing rod [2]")
-        pyautogui.keyDown('w')
+        pyautogui.keyDown(fishing_keybind)
         time.sleep( random.uniform( 0.05, 0.1 ))
-        pyautogui.keyUp('w')
+        pyautogui.keyUp(fishing_keybind)
         flag = "thrown"
         time.sleep( random.uniform(4.5, 6.5))
 
     print(strftime("%H:%M:%S", gmtime()), "Not time yet!")
+    time.sleep(0.5)
             
             
     
