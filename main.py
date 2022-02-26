@@ -4,8 +4,14 @@ import cv2
 import time
 from time import gmtime, strftime
 import random
+import sys
 
 fishing_keybind = "3"
+
+if len(sys.argv) > 1:
+    energy = int(sys.argv[1])
+else:
+    energy = 10000
 
 # init
 class screen:   
@@ -16,18 +22,20 @@ flag = "pulled"
 template = cv2.imread("template.png", 0)
 poplavok = cv2.imread("poplavok.png", 0)
 
-print(strftime("%H:%M:%S", gmtime()), "starting auto fish")
+print(strftime("%H:%M:%S", gmtime()), "starting auto fish, switch to lost ark window within 5 seconds")
 time.sleep(5)
 
-while(1):
+while energy > 60 and failed < 3:
     if flag == "pulled":
-        print(strftime("%H:%M:%S", gmtime()), "throwing a fishing rod [1]")
+        print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod [1]")
         pyautogui.keyDown(fishing_keybind)
         time.sleep( random.uniform( 0.05, 0.1 ))
         pyautogui.keyUp(fishing_keybind)
         flag = "thrown"
+        start_time = time.time()
+        compare_count = 0
+        failed = 0
         time.sleep( random.uniform(4.5, 6.5))        
-        
 
     # take screenshot
     image = pyautogui.screenshot(region=(screen.weight/2 - 100, screen.height/2 - 150, 200, 200))
@@ -42,27 +50,37 @@ while(1):
     # exclamation point matched
     if len(loc[0]) > 0:
         if flag == "thrown":  
-            print(strftime("%H:%M:%S", gmtime()), "Time to fish!")
+            print(strftime("%H:%M:%S", gmtime()), "CATCH!")
             time.sleep(random.uniform(0.2, 1.0))
             pyautogui.keyDown(fishing_keybind)
             time.sleep( random.uniform( 0.05, 0.1 ))
             pyautogui.keyUp(fishing_keybind)
             flag = "pulled"
+            energy -= 60
             time.sleep(random.uniform(8.5, 10.5))
 
     poplavok_coordinates = cv2.matchTemplate(image, poplavok, cv2.TM_CCOEFF_NORMED)
     poplavok_loc = numpy.where( poplavok_coordinates >= 0.7)
     
     if len(poplavok_loc[0]) == 0 and flag == "pulled":
-        print(strftime("%H:%M:%S", gmtime()), "throwing a fishing rod [2]")
+        print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod [2]")
         pyautogui.keyDown(fishing_keybind)
         time.sleep( random.uniform( 0.05, 0.1 ))
         pyautogui.keyUp(fishing_keybind)
         flag = "thrown"
+        start_time = time.time()
+        compare_count = 0
+        failed = 0
         time.sleep( random.uniform(4.5, 6.5))
 
-    print(strftime("%H:%M:%S", gmtime()), "Not time yet!")
-    time.sleep(0.5)
+    compare_count += 1
+    if not (compare_count % 20):
+        print("waiting for fish...")
+
+    if time.time() - start_time > 15:
+        failed += 1
+        print("FAILED")
+        continue
             
-            
+print("out of energy, exiting") 
     
