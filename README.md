@@ -11,7 +11,7 @@ pip install Pillow --upgrade
 
 ## Usage
 Edit `main.py` to set your `fishing_keybind`.
-Have Lost Ark open and stand at fishing spot.
+Have Lost Ark open and stand at fishing spot. Switch lost ark into focus window within 5 seconds.
 Depending on how much `[energy]` you want to spend (assuming 60 energy per successful catch). Will fish until you run out by default.
 ```bash
 python main.py [energy]
