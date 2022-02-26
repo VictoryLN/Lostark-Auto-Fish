@@ -26,11 +26,11 @@ print(strftime("%H:%M:%S", gmtime()), "starting auto fish, switch to lost ark wi
 time.sleep(5)
 
 failed = 0
-while energy > 60 and failed < 3:
+while energy > 0 and failed < 3:
     if flag == "pulled":
         print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod. Starting energy: ", energy)
         pyautogui.keyDown(fishing_keybind)
-        time.sleep( random.uniform( 0.05, 0.1 ))
+        time.sleep(max(0.05,random.gauss(0.12, 0.05)))
         pyautogui.keyUp(fishing_keybind)
         flag = "thrown"
         start_time = time.time()
@@ -52,9 +52,9 @@ while energy > 60 and failed < 3:
     if len(loc[0]) > 0:
         if flag == "thrown":  
             print(strftime("%H:%M:%S", gmtime()), "CATCH!")
-            time.sleep(random.uniform(0.2, 1.0))
+            time.sleep(max(0.15,random.gauss(0.3, 0.1)))
             pyautogui.keyDown(fishing_keybind)
-            time.sleep( random.uniform( 0.05, 0.1 ))
+            time.sleep(max(0.05,random.gauss(0.12, 0.05)))
             pyautogui.keyUp(fishing_keybind)
             flag = "pulled"
             energy -= 60
@@ -66,22 +66,26 @@ while energy > 60 and failed < 3:
     if len(poplavok_loc[0]) == 0 and flag == "pulled":
         print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod. Energy remaining: ", energy)
         pyautogui.keyDown(fishing_keybind)
-        time.sleep( random.uniform( 0.05, 0.1 ))
+        time.sleep(max(0.05,random.gauss(0.12, 0.05)))
         pyautogui.keyUp(fishing_keybind)
         flag = "thrown"
         start_time = time.time()
         compare_count = 0
         failed = 0
-        time.sleep( random.uniform(4.5, 6.5))
+        time.sleep(random.uniform(4.5, 6.5))
 
     compare_count += 1
     if not (compare_count % 50):
         print("waiting for fish...")
 
-    if time.time() - start_time > 18:
+    if time.time() - start_time > 15:
         failed += 1
-        flag = "pulled"
         print("FAILED")
+        pyautogui.keyDown(fishing_keybind)
+        time.sleep(max(0.05,random.gauss(0.12, 0.05)))
+        pyautogui.keyUp(fishing_keybind)
+        flag = "pulled"
+        sleep(5)
         continue
             
 print("out of energy, exiting") 
