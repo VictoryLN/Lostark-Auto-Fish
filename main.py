@@ -85,7 +85,7 @@ while energy > 0 and failed < 3:
         time.sleep(max(0.05,random.gauss(0.12, 0.05)))
         pyautogui.keyUp(fishing_keybind)
         flag = "pulled"
-        sleep(5)
+        time.sleep(5)
         continue
             
 print("out of energy, exiting") 
