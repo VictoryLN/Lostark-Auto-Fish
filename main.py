@@ -7,13 +7,12 @@ import random
 
 fishing_keybind = "3"
 
-# разрешение экрана
+# init
 class screen:   
-    weight = 1920
-    height = 1080
+    (weight, height) = pyautogui.size() 
 flag = "pulled"
 
-# шаблоны
+# load template images
 template = cv2.imread("template.png", 0)
 poplavok = cv2.imread("poplavok.png", 0)
 
@@ -30,17 +29,17 @@ while(1):
         time.sleep( random.uniform(4.5, 6.5))        
         
 
-    # создание скриншота
+    # take screenshot
     image = pyautogui.screenshot(region=(screen.weight/2 - 100, screen.height/2 - 150, 200, 200))
     image = cv2.cvtColor(numpy.array(image), 0)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # поиск шаблона на скрине
+    # openCV try to match template
     template_coordinates = cv2.matchTemplate(image, template, cv2.TM_CCOEFF_NORMED)
     loc = numpy.where( template_coordinates >= 0.7)
 
 
-    # исходя из результатов поиска либо нажwимается W либо ничего не происходит и цикл идет по новой
+    # exclamation point matched
     if len(loc[0]) > 0:
         if flag == "thrown":  
             print(strftime("%H:%M:%S", gmtime()), "Time to fish!")
