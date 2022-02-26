@@ -27,7 +27,7 @@ time.sleep(5)
 
 while energy > 60 and failed < 3:
     if flag == "pulled":
-        print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod [1]")
+        print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod. Starting energy: ", energy)
         pyautogui.keyDown(fishing_keybind)
         time.sleep( random.uniform( 0.05, 0.1 ))
         pyautogui.keyUp(fishing_keybind)
@@ -63,7 +63,7 @@ while energy > 60 and failed < 3:
     poplavok_loc = numpy.where( poplavok_coordinates >= 0.7)
     
     if len(poplavok_loc[0]) == 0 and flag == "pulled":
-        print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod [2]")
+        print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod. Energy remaining: ", energy)
         pyautogui.keyDown(fishing_keybind)
         time.sleep( random.uniform( 0.05, 0.1 ))
         pyautogui.keyUp(fishing_keybind)
