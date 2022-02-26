@@ -25,6 +25,7 @@ poplavok = cv2.imread("poplavok.png", 0)
 print(strftime("%H:%M:%S", gmtime()), "starting auto fish, switch to lost ark window within 5 seconds")
 time.sleep(5)
 
+failed = 0
 while energy > 60 and failed < 3:
     if flag == "pulled":
         print(strftime("%H:%M:%S", gmtime()), "throwing fishing rod. Starting energy: ", energy)
@@ -74,11 +75,12 @@ while energy > 60 and failed < 3:
         time.sleep( random.uniform(4.5, 6.5))
 
     compare_count += 1
-    if not (compare_count % 20):
+    if not (compare_count % 50):
         print("waiting for fish...")
 
-    if time.time() - start_time > 15:
+    if time.time() - start_time > 18:
         failed += 1
+        flag = "pulled"
         print("FAILED")
         continue
             
