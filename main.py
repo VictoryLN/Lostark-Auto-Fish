@@ -35,7 +35,6 @@ while energy > 0 and failed < 3:
         flag = "thrown"
         start_time = time.time()
         compare_count = 0
-        failed = 0
         time.sleep( random.uniform(4.5, 6.5))        
 
     # take screenshot
@@ -58,6 +57,7 @@ while energy > 0 and failed < 3:
             pyautogui.keyUp(fishing_keybind)
             flag = "pulled"
             energy -= 60
+            failed = 0
             time.sleep(random.uniform(8.5, 10.5))
 
     poplavok_coordinates = cv2.matchTemplate(image, poplavok, cv2.TM_CCOEFF_NORMED)
@@ -71,7 +71,6 @@ while energy > 0 and failed < 3:
         flag = "thrown"
         start_time = time.time()
         compare_count = 0
-        failed = 0
         time.sleep(random.uniform(4.5, 6.5))
 
     compare_count += 1
@@ -80,12 +79,9 @@ while energy > 0 and failed < 3:
 
     if time.time() - start_time > 15:
         failed += 1
-        print("FAILED")
-        pyautogui.keyDown(fishing_keybind)
-        time.sleep(max(0.05,random.gauss(0.12, 0.05)))
-        pyautogui.keyUp(fishing_keybind)
+        print("FAILED to see fish, resetting in 15 sec")
         flag = "pulled"
-        time.sleep(5)
+        time.sleep(15)
         continue
             
 print("out of energy, exiting") 
