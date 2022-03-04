@@ -81,7 +81,7 @@ while energy > 0 and failed < 3:
         failed += 1
         print("FAILED to see fish, resetting in 15 sec")
         flag = "pulled"
-        time.sleep(15)
+        time.sleep(random.uniform(15,17))
         continue
             
 print("out of energy, exiting") 
