@@ -29,7 +29,9 @@ Some code is from [LostArkFishingBot](https://github.com/DamienShahan/LostArkFis
 3. Switch to a worldline with few player.
 4. Press 'B'.
 5. Fold all event, quest, chat window. Like this.
-   ![1700576026506](image/README/1700576026506.png)![1700576038337](image/README/1700576038337.png)![1700576046307](image/README/1700576046307.png)
+   ![1700576026506](image/README/1700576026506.png)
+   ![1700576038337](image/README/1700576038337.png)
+   ![1700576046307](image/README/1700576046307.png)
 6. Alt+Tab to Desktop. Run python code: `python main.py`
 7. Switch to the game window.
 
