@@ -1,12 +1,12 @@
 # LostArk Auto Fish
 
-Some code are from [LostArkFishingBot](https://github.com/DamienShahan/LostArkFishingBot).
+Some code is from [LostArkFishingBot](https://github.com/DamienShahan/LostArkFishingBot).
 
 ## Function
 
 - Auto **Float Fishing**
 - Auto **Net Casting** and play mini game.
-- Auto **Repear** fish rod. (Beatrice's Blessing only).
+- Auto **Repear** fish rod. (Beatrice's Blessing only). *Thanks to DamienShahan*
 - Auto accept and submit guild's fishing quest.
 
 ## Requirement
