@@ -1,19 +1,40 @@
-# lost-ark-auto-fish
-OpenCV based Lost Ark fishing bot. <br>
-Keypress timings have been randomized to minimize chance of getting caught. Could be bannable if caught, so use at your own risk.
+# LostArk Auto Fish
 
-## Install dependencies:
-```bash
-pip install pyautogui opencv-python numpy
-pip install Pillow --upgrade
-```
+Some code are from [LostArkFishingBot](https://github.com/DamienShahan/LostArkFishingBot).
+
+## Function
+
+- Auto **Float Fishing**
+- Auto **Net Casting** and play mini game.
+- Auto **Repear** fish rod. (Beatrice's Blessing only).
+- Auto accept and submit guild's fishing quest.
+
+## Requirement
+
+**IMPORTANT: It only works well on the fullscreen resolution of 2560x1600 now. Other resolutions should first change the x(y) variables in the code and take the corresponding screenshot.** 
+
+- python3+
+- pyautogui
+- opencv-python
+- PIL
+- yaml
 
 ## Usage
-Edit `main.py` to set your `fishing_keybind`. <br>
-Optionally provice how much `[energy]` you want to spend (assuming 60 energy per successful catch). Will fish until you run out by default.
-```bash
-python main.py [energy]
-```
-Switch lost ark into focus window within 5 seconds of running script and make sure your cursor is at fishing spot. <br>
 
+1. Move to South Vern
 
+![1700575372504](image/README/1700575372504.png)
+
+2. Accept **ALL** guild task(including tasks that are not fishing task).
+3. Switch to a worldline with few player.
+4. Press 'B'.
+5. Fold all event, quest, chat window. Like this.
+   ![1700576026506](image/README/1700576026506.png)![1700576038337](image/README/1700576038337.png)![1700576046307](image/README/1700576046307.png)
+6. Alt+Tab to Desktop. Run python code: `python main.py`
+7. Switch to the game window.
+
+## Reference
+
+DamienShahan, https://github.com/DamienShahan/LostArkFishingBot
+
+Minish144, https://github.com/Minish144/lost-ark-fishing-bot
