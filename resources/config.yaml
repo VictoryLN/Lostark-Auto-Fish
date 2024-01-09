@@ -1,0 +1,91 @@
+fishing:
+  key:
+    fish: 'e'
+  idleTimeout: 30                                     # 闲置超时时间(秒)，处理异常情况，重置动作
+  image:                                             # 普通钓鱼相关图片
+    bang: "resources/1080/bang.png"                   # # 上钩的感叹号  
+    poplavok: "resources/1080/poplavok.png"             # # 鱼漂
+  position:
+    lake:                                             # # 钓鱼时，光标需要在水里
+      - 585
+      - 772
+  region:
+    bang:
+      - 942
+      - 457
+      - 39
+      - 99
+miniGame:
+  key:
+    net: 'd'
+  spaceTime: 3                                        # 小游戏 触发空格时需要按的次数，数值越大，浮标一次涨的越多
+  spaceInterval: 0.15                                 # 小游戏 触发空格时响铃按键的间隔
+  image:                                             # 小游戏相关图片
+    cool_feeling: "resources/1080/5.png"                # # 超爽手感满层
+    perfect_zone: "resources/1080/perfectZone.png"      # # 小游戏完美区域（包含部分不完美）
+    moving_arrow: "resources/1080/movingArrow.png"      # # 小游戏浮标
+    esc_btn: "resources/1080/esc.png"                   # # 小游戏“退出按钮”
+  region:
+    cool_feeling:
+      - 683
+      - 897
+      - 183
+      - 21
+    game_bar:
+      - 503
+      - 123
+      - 14
+      - 428
+    esc_btn:
+      - 15
+      - 47
+      - 101
+      - 26
+  arrow:
+    xOff: 19
+    width: 28
+    height: 18
+repaire:                                                # 自动修理，需要贝拉祝福（没有的下面不用看了）
+  enable: False                                          # 是否开启自动修理
+  key:
+    pet-inventory-modifier: alt
+    pet-inventory: p
+  position:
+    small_repaire_btn:                                           # # 宠物，点开修理菜单
+      - 1204
+      - 697
+    life_tool_btn:                                      # # 生活工具
+      - 1241
+      - 988
+    repaire_all_btn:                                    # # 修理全部
+      - 722
+      - 805
+    ok_btn:                                             # # 确定
+      - 913
+      - 628
+task:
+  enable: True                                        # 是否自动接受/提交工会钓鱼任务(True/False，开启时，需保证是已接受状态)
+  key:
+    unas-task-modifier: alt
+    unas-task: j
+  image:                                             # 自动任务相关图片
+    acceptTask: "resources/1080/acceptTask.png"       # # 接受任务时的"同意"
+    submitTask: "resources/1080/submitTask.png"       # # 提示任务已完成的"已完成"
+  position:                                       # 自动提交钓鱼任务
+    guild_tab:                                      # # 艾芙娜委托-工会任务标签
+      - 1313
+      - 513
+    ok_btn:                                         # # 提交任务时弹出的确认提交按钮位置  
+      - 353
+      - 744
+  region:
+    accept_btn:
+      - 1232
+      - 292
+      - 104
+      - 497
+    submit_btn:
+      - 1616
+      - 385
+      - 77
+      - 17

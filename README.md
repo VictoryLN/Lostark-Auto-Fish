@@ -1,39 +1,41 @@
-# LostArk Auto Fish
+# LostArk Auto Fish-命运方舟自动钓鱼/自动小游戏/自动工会任务
 
-Some code is from [LostArkFishingBot](https://github.com/DamienShahan/LostArkFishingBot).
+部分代码来自[LostArkFishingBot](https://github.com/DamienShahan/LostArkFishingBot). 在此之上补充了撒网小游戏和提交工会钓鱼任务
 
-## Function
+## 功能
 
-- Auto **Float Fishing**
-- Auto **Net Casting** and play mini game.
-- Auto **Repear** fish rod. (Beatrice's Blessing only). *Thanks to DamienShahan*
-- Auto accept and submit guild's fishing quest.
+- 自动钓鱼
+- 自动撒网小游戏（有概率失败）
+- 自动修理（需要贝拉的祝福）
+- 自动接受与提交工会钓鱼任务
 
-## Requirement
+## 使用前提
 
-**IMPORTANT: It only works well on the fullscreen resolution of 2560x1600 now. Other resolutions should first change the x(y) variables in the code and take the corresponding screenshot.** 
+**重要: 只能工作在1920x1080的窗口化环境中**
 
-- python3+
+需要：
+
+- python3.7+，
 - pyautogui
 - opencv-python
 - PIL
 - yaml
 
-## Usage
+## 使用方法
 
-1. Move to South Vern
+1. 到贝隆南钓鱼点
+2. 接受所有工会任务
+3. 切换玩家比较少的线路（人多了干扰判断）
+4. 按B切换到生活技能
+5. 折叠聊天框，左上角事件活动框。最好设置事件不提醒。
+6. 运行 `python main.py`
+7. 5秒内切换到游戏窗口
 
-![1700575372504](image/README/1700575372504.png)
+## 配置
 
-2. Accept **ALL** guild task(including tasks that are not fishing task).
-3. Switch to a worldline with few player.
-4. Press 'B'.
-5. Fold all event, quest, chat window. Like this.
-   ![1700576026506](image/README/1700576026506.png)
-   ![1700576038337](image/README/1700576038337.png)
-   ![1700576046307](image/README/1700576046307.png)
-6. Alt+Tab to Desktop. Run python code: `python main.py`
-7. Switch to the game window.
+配置相关都在resources/config.yaml文件中，钓鱼默认e键，撒网默认d键，委托默认alt+j，宠物默认alt+p。
+
+图片资源都在resources/1080中
 
 ## Reference
 
